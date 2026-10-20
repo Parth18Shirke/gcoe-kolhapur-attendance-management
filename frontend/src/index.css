@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-surface font-sans text-ink-700 antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  /* Numbers that matter line up: tabular figures everywhere in tables. */
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+  input[type='search']::-webkit-search-cancel-button {
+    cursor: pointer;
+  }
+}
+
+/* Reports → "PDF (A4)" prints only the report pages. */
+@page {
+  size: A4 portrait;
+  margin: 12mm;
+}
+@media print {
+  body {
+    background: #fff !important;
+  }
+  header,
+  aside,
+  nav,
+  .no-print,
+  [data-preview-bar] {
+    display: none !important;
+  }
+  main,
+  main > div {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+  .print-area {
+    overflow: visible !important;
+  }
+  .a4-page {
+    width: auto !important;
+    min-height: 0 !important;
+    height: 270mm;
+    padding: 0 !important;
+    box-shadow: none !important;
+    break-after: page;
+  }
+  .a4-page:last-child {
+    break-after: auto;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -1,0 +1,4957 @@
+openapi: 3.0.3
+info:
+  title: College Attendance Management System API
+  version: 1.0.0
+  description: Authoritative Institutional REST API for Attendance, Timetable, Topics,
+    and Reports.
+paths:
+  /api/v1/academics/academic-years/:
+    get:
+      operationId: academics_academic_years_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAcademicYearList'
+          description: ''
+    post:
+      operationId: academics_academic_years_create
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcademicYearRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AcademicYearRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AcademicYearRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcademicYear'
+          description: ''
+  /api/v1/academics/academic-years/{id}/:
+    get:
+      operationId: academics_academic_years_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this academic year.
+        required: true
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcademicYear'
+          description: ''
+    put:
+      operationId: academics_academic_years_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this academic year.
+        required: true
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcademicYearRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AcademicYearRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AcademicYearRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcademicYear'
+          description: ''
+    patch:
+      operationId: academics_academic_years_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this academic year.
+        required: true
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAcademicYearRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAcademicYearRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAcademicYearRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcademicYear'
+          description: ''
+    delete:
+      operationId: academics_academic_years_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this academic year.
+        required: true
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/academics/departments/:
+    get:
+      operationId: academics_departments_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDepartmentList'
+          description: ''
+    post:
+      operationId: academics_departments_create
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+          description: ''
+  /api/v1/academics/departments/{id}/:
+    get:
+      operationId: academics_departments_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this department.
+        required: true
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+          description: ''
+    put:
+      operationId: academics_departments_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this department.
+        required: true
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+          description: ''
+    patch:
+      operationId: academics_departments_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this department.
+        required: true
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDepartmentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDepartmentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDepartmentRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+          description: ''
+    delete:
+      operationId: academics_departments_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this department.
+        required: true
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/academics/divisions/:
+    get:
+      operationId: academics_divisions_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDivisionList'
+          description: ''
+    post:
+      operationId: academics_divisions_create
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DivisionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DivisionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DivisionRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Division'
+          description: ''
+  /api/v1/academics/divisions/{id}/:
+    get:
+      operationId: academics_divisions_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this division.
+        required: true
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Division'
+          description: ''
+    put:
+      operationId: academics_divisions_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this division.
+        required: true
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DivisionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DivisionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DivisionRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Division'
+          description: ''
+    patch:
+      operationId: academics_divisions_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this division.
+        required: true
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDivisionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDivisionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDivisionRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Division'
+          description: ''
+    delete:
+      operationId: academics_divisions_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this division.
+        required: true
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/academics/programs/:
+    get:
+      operationId: academics_programs_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedProgramList'
+          description: ''
+    post:
+      operationId: academics_programs_create
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProgramRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProgramRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProgramRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Program'
+          description: ''
+  /api/v1/academics/programs/{id}/:
+    get:
+      operationId: academics_programs_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this program.
+        required: true
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Program'
+          description: ''
+    put:
+      operationId: academics_programs_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this program.
+        required: true
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProgramRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProgramRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProgramRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Program'
+          description: ''
+    patch:
+      operationId: academics_programs_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this program.
+        required: true
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProgramRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProgramRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProgramRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Program'
+          description: ''
+    delete:
+      operationId: academics_programs_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this program.
+        required: true
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/academics/semesters/:
+    get:
+      operationId: academics_semesters_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSemesterList'
+          description: ''
+    post:
+      operationId: academics_semesters_create
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SemesterRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SemesterRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SemesterRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Semester'
+          description: ''
+  /api/v1/academics/semesters/{id}/:
+    get:
+      operationId: academics_semesters_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this semester.
+        required: true
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Semester'
+          description: ''
+    put:
+      operationId: academics_semesters_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this semester.
+        required: true
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SemesterRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SemesterRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SemesterRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Semester'
+          description: ''
+    patch:
+      operationId: academics_semesters_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this semester.
+        required: true
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSemesterRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSemesterRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSemesterRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Semester'
+          description: ''
+    delete:
+      operationId: academics_semesters_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this semester.
+        required: true
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/academics/subjects/:
+    get:
+      operationId: academics_subjects_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSubjectList'
+          description: ''
+    post:
+      operationId: academics_subjects_create
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubjectRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SubjectRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SubjectRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subject'
+          description: ''
+  /api/v1/academics/subjects/{id}/:
+    get:
+      operationId: academics_subjects_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this subject.
+        required: true
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subject'
+          description: ''
+    put:
+      operationId: academics_subjects_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this subject.
+        required: true
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubjectRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SubjectRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SubjectRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subject'
+          description: ''
+    patch:
+      operationId: academics_subjects_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this subject.
+        required: true
+      tags:
+      - academics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSubjectRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSubjectRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSubjectRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subject'
+          description: ''
+    delete:
+      operationId: academics_subjects_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this subject.
+        required: true
+      tags:
+      - academics
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/attendance/divisions/{division_id}/summary/:
+    get:
+      operationId: attendance_divisions_summary_retrieve
+      parameters:
+      - in: path
+        name: division_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - attendance
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/v1/attendance/sessions/{session_id}/roster/:
+    get:
+      operationId: attendance_sessions_roster_retrieve
+      description: Returns the student roster for a session's division, along with
+        any existing marks and topic logs.
+      parameters:
+      - in: path
+        name: session_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - attendance
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/v1/attendance/sessions/{session_id}/submit/:
+    post:
+      operationId: attendance_sessions_submit_create
+      parameters:
+      - in: path
+        name: session_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - attendance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitAttendanceRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SubmitAttendanceRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SubmitAttendanceRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/attendance/students/{student_id}/metrics/:
+    get:
+      operationId: attendance_students_metrics_retrieve
+      parameters:
+      - in: path
+        name: student_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - attendance
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttendanceCalculation'
+          description: ''
+  /api/v1/audit/logs/:
+    get:
+      operationId: audit_logs_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - audit
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAuditEntryList'
+          description: ''
+  /api/v1/audit/logs/{id}/:
+    get:
+      operationId: audit_logs_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Audit Entry.
+        required: true
+      tags:
+      - audit
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditEntry'
+          description: ''
+  /api/v1/auth/logout/:
+    post:
+      operationId: auth_logout_create
+      tags:
+      - auth
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/v1/auth/me/:
+    get:
+      operationId: auth_me_retrieve
+      tags:
+      - auth
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/v1/auth/otp/request/:
+    post:
+      operationId: auth_otp_request_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OTPRequestRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OTPRequestRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OTPRequestRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/auth/otp/verify/:
+    post:
+      operationId: auth_otp_verify_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OTPVerifyRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OTPVerifyRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OTPVerifyRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/auth/users/:
+    get:
+      operationId: auth_users_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - auth
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUserList'
+          description: ''
+    post:
+      operationId: auth_users_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/v1/auth/users/{id}/:
+    get:
+      operationId: auth_users_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User.
+        required: true
+      tags:
+      - auth
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: auth_users_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User.
+        required: true
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: auth_users_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User.
+        required: true
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUserRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: auth_users_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User.
+        required: true
+      tags:
+      - auth
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/corrections/request/:
+    post:
+      operationId: corrections_request_create
+      tags:
+      - corrections
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitCorrectionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SubmitCorrectionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SubmitCorrectionRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorrectionRequest'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/corrections/requests/:
+    get:
+      operationId: corrections_requests_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - corrections
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCorrectionRequestList'
+          description: ''
+  /api/v1/corrections/requests/{id}/:
+    get:
+      operationId: corrections_requests_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - corrections
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorrectionRequest'
+          description: ''
+  /api/v1/corrections/requests/{id}/review/:
+    post:
+      operationId: corrections_requests_review_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - corrections
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewCorrectionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ReviewCorrectionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ReviewCorrectionRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorrectionRequest'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/faculty/assignments/:
+    get:
+      operationId: faculty_assignments_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - faculty
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedFacultyAssignmentList'
+          description: ''
+    post:
+      operationId: faculty_assignments_create
+      tags:
+      - faculty
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacultyAssignmentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacultyAssignmentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacultyAssignmentRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacultyAssignment'
+          description: ''
+  /api/v1/faculty/assignments/{id}/:
+    get:
+      operationId: faculty_assignments_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - faculty
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacultyAssignment'
+          description: ''
+    put:
+      operationId: faculty_assignments_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - faculty
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacultyAssignmentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacultyAssignmentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacultyAssignmentRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacultyAssignment'
+          description: ''
+    patch:
+      operationId: faculty_assignments_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - faculty
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacultyAssignmentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacultyAssignmentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacultyAssignmentRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacultyAssignment'
+          description: ''
+    delete:
+      operationId: faculty_assignments_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - faculty
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/notifications/outbox/:
+    get:
+      operationId: notifications_outbox_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - notifications
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedNotificationOutboxList'
+          description: ''
+  /api/v1/notifications/outbox/{id}/:
+    get:
+      operationId: notifications_outbox_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this notification outbox.
+        required: true
+      tags:
+      - notifications
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationOutbox'
+          description: ''
+  /api/v1/notifications/outbox/process/:
+    post:
+      operationId: notifications_outbox_process_create
+      tags:
+      - notifications
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/notifications/states/:
+    get:
+      operationId: notifications_states_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - notifications
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedNotificationStateList'
+          description: ''
+  /api/v1/notifications/states/{id}/:
+    get:
+      operationId: notifications_states_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this notification state.
+        required: true
+      tags:
+      - notifications
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationState'
+          description: ''
+  /api/v1/reports/deficiency/csv/:
+    get:
+      operationId: reports_deficiency_csv_retrieve
+      tags:
+      - reports
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            text/csv:
+              schema:
+                type: string
+          description: ''
+  /api/v1/reports/monthly/docx/:
+    get:
+      operationId: reports_monthly_docx_retrieve
+      tags:
+      - reports
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/vnd.openxmlformats-officedocument.wordprocessingml.document:
+              schema:
+                type: string
+                format: binary
+          description: ''
+  /api/v1/reports/monthly/pdf/:
+    get:
+      operationId: reports_monthly_pdf_retrieve
+      tags:
+      - reports
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+          description: ''
+  /api/v1/rooms/rooms/:
+    get:
+      operationId: rooms_rooms_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - rooms
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRoomList'
+          description: ''
+    post:
+      operationId: rooms_rooms_create
+      tags:
+      - rooms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RoomRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RoomRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+  /api/v1/rooms/rooms/{id}/:
+    get:
+      operationId: rooms_rooms_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this room.
+        required: true
+      tags:
+      - rooms
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+    put:
+      operationId: rooms_rooms_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this room.
+        required: true
+      tags:
+      - rooms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RoomRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RoomRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+    patch:
+      operationId: rooms_rooms_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this room.
+        required: true
+      tags:
+      - rooms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+    delete:
+      operationId: rooms_rooms_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this room.
+        required: true
+      tags:
+      - rooms
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/students/import/:
+    post:
+      operationId: students_import_create
+      tags:
+      - students
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StudentImportRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StudentImportRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/students/import-logs/:
+    get:
+      operationId: students_import_logs_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - students
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedStudentImportLogList'
+          description: ''
+  /api/v1/students/import-logs/{id}/:
+    get:
+      operationId: students_import_logs_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student import log.
+        required: true
+      tags:
+      - students
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentImportLog'
+          description: ''
+  /api/v1/students/records/:
+    get:
+      operationId: students_records_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - students
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAdminStudentList'
+          description: ''
+    post:
+      operationId: students_records_create
+      tags:
+      - students
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminStudentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AdminStudentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AdminStudentRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminStudent'
+          description: ''
+  /api/v1/students/records/{id}/:
+    get:
+      operationId: students_records_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student.
+        required: true
+      tags:
+      - students
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminStudent'
+          description: ''
+    put:
+      operationId: students_records_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student.
+        required: true
+      tags:
+      - students
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminStudentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AdminStudentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AdminStudentRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminStudent'
+          description: ''
+    patch:
+      operationId: students_records_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student.
+        required: true
+      tags:
+      - students
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAdminStudentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAdminStudentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAdminStudentRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminStudent'
+          description: ''
+    delete:
+      operationId: students_records_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student.
+        required: true
+      tags:
+      - students
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/sync/attendance/:
+    post:
+      operationId: sync_attendance_create
+      description: |-
+        Ingests attendance submissions from offline clients.
+        Guarantees idempotency via `idempotency_key` and rejects submissions conflicting with server state.
+      tags:
+      - sync
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfflineSyncPayloadRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OfflineSyncPayloadRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OfflineSyncPayloadRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+        '409':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/timetable/sessions/:
+    get:
+      operationId: timetable_sessions_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - timetable
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLectureSessionList'
+          description: ''
+    post:
+      operationId: timetable_sessions_create
+      tags:
+      - timetable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LectureSessionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LectureSessionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LectureSessionRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LectureSession'
+          description: ''
+  /api/v1/timetable/sessions/{id}/:
+    get:
+      operationId: timetable_sessions_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this lecture session.
+        required: true
+      tags:
+      - timetable
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LectureSession'
+          description: ''
+    put:
+      operationId: timetable_sessions_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this lecture session.
+        required: true
+      tags:
+      - timetable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LectureSessionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LectureSessionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LectureSessionRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LectureSession'
+          description: ''
+    patch:
+      operationId: timetable_sessions_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this lecture session.
+        required: true
+      tags:
+      - timetable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLectureSessionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLectureSessionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLectureSessionRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LectureSession'
+          description: ''
+    delete:
+      operationId: timetable_sessions_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this lecture session.
+        required: true
+      tags:
+      - timetable
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/timetable/sessions/{id}/cancel/:
+    post:
+      operationId: timetable_sessions_cancel_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this lecture session.
+        required: true
+      tags:
+      - timetable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelSessionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CancelSessionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CancelSessionRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/timetable/sessions/{id}/reschedule/:
+    post:
+      operationId: timetable_sessions_reschedule_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this lecture session.
+        required: true
+      tags:
+      - timetable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RescheduleSessionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RescheduleSessionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RescheduleSessionRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+        '409':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/timetable/sessions/{id}/topic/:
+    post:
+      operationId: timetable_sessions_topic_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this lecture session.
+        required: true
+      tags:
+      - timetable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LectureTopicRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LectureTopicRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LectureTopicRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/timetable/slots/:
+    get:
+      operationId: timetable_slots_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - timetable
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTimetableSlotList'
+          description: ''
+    post:
+      operationId: timetable_slots_create
+      tags:
+      - timetable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimetableSlotRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TimetableSlotRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TimetableSlotRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimetableSlot'
+          description: ''
+  /api/v1/timetable/slots/{id}/:
+    get:
+      operationId: timetable_slots_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this timetable slot.
+        required: true
+      tags:
+      - timetable
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimetableSlot'
+          description: ''
+    put:
+      operationId: timetable_slots_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this timetable slot.
+        required: true
+      tags:
+      - timetable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimetableSlotRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TimetableSlotRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TimetableSlotRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimetableSlot'
+          description: ''
+    patch:
+      operationId: timetable_slots_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this timetable slot.
+        required: true
+      tags:
+      - timetable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTimetableSlotRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTimetableSlotRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTimetableSlotRequest'
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimetableSlot'
+          description: ''
+    delete:
+      operationId: timetable_slots_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this timetable slot.
+        required: true
+      tags:
+      - timetable
+      security:
+      - BearerAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    AcademicYear:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          description: e.g. 2026-2027
+          maxLength: 50
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        is_current:
+          type: boolean
+      required:
+      - created_at
+      - end_date
+      - id
+      - name
+      - start_date
+      - updated_at
+    AcademicYearRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: e.g. 2026-2027
+          maxLength: 50
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        is_current:
+          type: boolean
+      required:
+      - end_date
+      - name
+      - start_date
+    ActionTypeEnum:
+      enum:
+      - CREATE
+      - UPDATE
+      - DELETE
+      - FINALIZE
+      - CORRECT
+      - APPROVE_CORRECTION
+      - REJECT_CORRECTION
+      - CANCEL_SESSION
+      - RESCHEDULE_SESSION
+      - SYNC_ATTENDANCE
+      type: string
+      description: |-
+        * `CREATE` - Create Record
+        * `UPDATE` - Update Record
+        * `DELETE` - Delete / Archive Record
+        * `FINALIZE` - Finalize Attendance Session
+        * `CORRECT` - Direct Attendance Correction
+        * `APPROVE_CORRECTION` - Approve Correction Request
+        * `REJECT_CORRECTION` - Reject Correction Request
+        * `CANCEL_SESSION` - Cancel Lecture Session
+        * `RESCHEDULE_SESSION` - Reschedule Lecture Session
+        * `SYNC_ATTENDANCE` - Offline Ingestion Sync
+    AdminStudent:
+      type: object
+      description: Full administrative serializer exposing university PRN and full
+        profile.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        classroom_display:
+          type: string
+          readOnly: true
+        division_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        prn:
+          type: string
+          description: Full University Permanent Registration Number (e.g. 23060361241234)
+          maxLength: 64
+        roll_number:
+          type: string
+          description: Class Roll No (e.g. IT-01)
+          maxLength: 30
+        full_name:
+          type: string
+          maxLength: 200
+        official_email:
+          type: string
+          format: email
+          maxLength: 254
+        status:
+          $ref: '#/components/schemas/AdminStudentStatusEnum'
+        division:
+          type: integer
+      required:
+      - classroom_display
+      - created_at
+      - division
+      - division_name
+      - full_name
+      - id
+      - official_email
+      - prn
+      - roll_number
+      - updated_at
+    AdminStudentRequest:
+      type: object
+      description: Full administrative serializer exposing university PRN and full
+        profile.
+      properties:
+        prn:
+          type: string
+          minLength: 1
+          description: Full University Permanent Registration Number (e.g. 23060361241234)
+          maxLength: 64
+        roll_number:
+          type: string
+          minLength: 1
+          description: Class Roll No (e.g. IT-01)
+          maxLength: 30
+        full_name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        official_email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 254
+        status:
+          $ref: '#/components/schemas/AdminStudentStatusEnum'
+        division:
+          type: integer
+      required:
+      - division
+      - full_name
+      - official_email
+      - prn
+      - roll_number
+    AdminStudentStatusEnum:
+      enum:
+      - ACTIVE
+      - INACTIVE
+      - ARCHIVED
+      type: string
+      description: |-
+        * `ACTIVE` - Active
+        * `INACTIVE` - Inactive
+        * `ARCHIVED` - Archived / Graduated
+    AttendanceCalculation:
+      type: object
+      properties:
+        student_id:
+          type: integer
+        roll_number:
+          type: string
+        classroom_display:
+          type: string
+        full_name:
+          type: string
+        total_conducted:
+          type: integer
+        total_attended:
+          type: integer
+        total_absent:
+          type: integer
+        overall_percentage:
+          type: number
+          format: double
+        theory_conducted:
+          type: integer
+        theory_attended:
+          type: integer
+        theory_percentage:
+          type: number
+          format: double
+        lab_conducted:
+          type: integer
+        lab_attended:
+          type: integer
+        lab_percentage:
+          type: number
+          format: double
+        is_deficient:
+          type: boolean
+        statutory_threshold:
+          type: number
+          format: double
+      required:
+      - classroom_display
+      - full_name
+      - is_deficient
+      - lab_attended
+      - lab_conducted
+      - lab_percentage
+      - overall_percentage
+      - roll_number
+      - statutory_threshold
+      - student_id
+      - theory_attended
+      - theory_conducted
+      - theory_percentage
+      - total_absent
+      - total_attended
+      - total_conducted
+    AttendanceRecordItemRequest:
+      type: object
+      properties:
+        student_id:
+          type: integer
+        status:
+          $ref: '#/components/schemas/StatusCecEnum'
+      required:
+      - status
+      - student_id
+    AuditEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        actor_name:
+          type: string
+          readOnly: true
+        actor_email:
+          type: string
+          readOnly: true
+        action_type:
+          $ref: '#/components/schemas/ActionTypeEnum'
+        entity_name:
+          type: string
+          maxLength: 100
+        entity_id:
+          type: string
+          maxLength: 64
+        old_values: {}
+        new_values: {}
+        reason:
+          type: string
+        client_ip:
+          type: string
+          maxLength: 45
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        actor:
+          type: integer
+          nullable: true
+      required:
+      - action_type
+      - actor_email
+      - actor_name
+      - created_at
+      - entity_id
+      - entity_name
+      - id
+    CancelSessionRequest:
+      type: object
+      properties:
+        reason:
+          type: string
+          minLength: 3
+          maxLength: 500
+      required:
+      - reason
+    CorrectionRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        requested_by_name:
+          type: string
+          readOnly: true
+        reviewed_by_name:
+          type: string
+          readOnly: true
+        student_display:
+          type: string
+          readOnly: true
+        student_roll:
+          type: string
+          readOnly: true
+        session_info:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        original_status:
+          type: string
+          maxLength: 20
+        new_status:
+          type: string
+          maxLength: 20
+        reason:
+          type: string
+          description: Mandatory institutional justification for modifying an academic
+            record
+        status:
+          $ref: '#/components/schemas/CorrectionStatusEnum'
+        reviewed_at:
+          type: string
+          format: date-time
+          nullable: true
+        review_remarks:
+          type: string
+        attendance_record:
+          type: integer
+        requested_by:
+          type: integer
+        reviewed_by:
+          type: integer
+          nullable: true
+      required:
+      - attendance_record
+      - created_at
+      - id
+      - new_status
+      - original_status
+      - reason
+      - requested_by
+      - requested_by_name
+      - reviewed_by_name
+      - session_info
+      - student_display
+      - student_roll
+      - updated_at
+    CorrectionStatusEnum:
+      enum:
+      - PENDING
+      - APPROVED
+      - REJECTED
+      - AUTO_APPLIED
+      type: string
+      description: |-
+        * `PENDING` - Pending HOD Approval
+        * `APPROVED` - Approved & Applied
+        * `REJECTED` - Rejected
+        * `AUTO_APPLIED` - Auto-Applied (24h Faculty Window)
+    DayOfWeekEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      description: |-
+        * `0` - Monday
+        * `1` - Tuesday
+        * `2` - Wednesday
+        * `3` - Thursday
+        * `4` - Friday
+        * `5` - Saturday
+        * `6` - Sunday
+    Department:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+        code:
+          type: string
+          maxLength: 20
+        description:
+          type: string
+        is_active:
+          type: boolean
+      required:
+      - code
+      - created_at
+      - id
+      - name
+      - updated_at
+    DepartmentBrief:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        code:
+          type: string
+          readOnly: true
+      required:
+      - code
+      - id
+      - name
+    DepartmentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        code:
+          type: string
+          minLength: 1
+          maxLength: 20
+        description:
+          type: string
+        is_active:
+          type: boolean
+      required:
+      - code
+      - name
+    Division:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        semester_info:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          description: e.g. Division A, Div 1
+          maxLength: 50
+        code:
+          type: string
+          maxLength: 20
+        semester:
+          type: integer
+      required:
+      - created_at
+      - id
+      - name
+      - semester
+      - semester_info
+      - updated_at
+    DivisionRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: e.g. Division A, Div 1
+          maxLength: 50
+        code:
+          type: string
+          maxLength: 20
+        semester:
+          type: integer
+      required:
+      - name
+      - semester
+    FacultyAssignment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        faculty_name:
+          type: string
+          readOnly: true
+        faculty_email:
+          type: string
+          readOnly: true
+        subject_name:
+          type: string
+          readOnly: true
+        subject_code:
+          type: string
+          readOnly: true
+        division_name:
+          type: string
+          readOnly: true
+        academic_year_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        is_primary:
+          type: boolean
+          description: Designates the primary lead instructor
+        faculty:
+          type: integer
+        subject:
+          type: integer
+        division:
+          type: integer
+        academic_year:
+          type: integer
+      required:
+      - academic_year
+      - academic_year_name
+      - created_at
+      - division
+      - division_name
+      - faculty
+      - faculty_email
+      - faculty_name
+      - id
+      - subject
+      - subject_code
+      - subject_name
+      - updated_at
+    FacultyAssignmentRequest:
+      type: object
+      properties:
+        is_primary:
+          type: boolean
+          description: Designates the primary lead instructor
+        faculty:
+          type: integer
+        subject:
+          type: integer
+        division:
+          type: integer
+        academic_year:
+          type: integer
+      required:
+      - academic_year
+      - division
+      - faculty
+      - subject
+    LectureSession:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        subject_code:
+          type: string
+          readOnly: true
+        subject_name:
+          type: string
+          readOnly: true
+        division_name:
+          type: string
+          readOnly: true
+        faculty_name:
+          type: string
+          readOnly: true
+        room_name:
+          type: string
+          readOnly: true
+        topic_log:
+          allOf:
+          - $ref: '#/components/schemas/LectureTopic'
+          readOnly: true
+        session_state:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        session_date:
+          type: string
+          format: date
+        start_time:
+          type: string
+          format: time
+        end_time:
+          type: string
+          format: time
+        duration_minutes:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          description: Duration in minutes (e.g. 60m for theory, 120m for lab)
+        session_type:
+          $ref: '#/components/schemas/SessionTypeEnum'
+        status:
+          $ref: '#/components/schemas/LectureSessionStatusEnum'
+        cancellation_reason:
+          type: string
+        cancelled_at:
+          type: string
+          format: date-time
+          nullable: true
+        slot:
+          type: integer
+          nullable: true
+        division:
+          type: integer
+        subject:
+          type: integer
+        faculty:
+          type: integer
+        room:
+          type: integer
+        rescheduled_from:
+          type: integer
+          nullable: true
+        cancelled_by:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - division
+      - division_name
+      - end_time
+      - faculty
+      - faculty_name
+      - id
+      - room
+      - room_name
+      - session_date
+      - session_state
+      - start_time
+      - subject
+      - subject_code
+      - subject_name
+      - topic_log
+      - updated_at
+    LectureSessionRequest:
+      type: object
+      properties:
+        session_date:
+          type: string
+          format: date
+        start_time:
+          type: string
+          format: time
+        end_time:
+          type: string
+          format: time
+        duration_minutes:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          description: Duration in minutes (e.g. 60m for theory, 120m for lab)
+        session_type:
+          $ref: '#/components/schemas/SessionTypeEnum'
+        status:
+          $ref: '#/components/schemas/LectureSessionStatusEnum'
+        cancellation_reason:
+          type: string
+        cancelled_at:
+          type: string
+          format: date-time
+          nullable: true
+        slot:
+          type: integer
+          nullable: true
+        division:
+          type: integer
+        subject:
+          type: integer
+        faculty:
+          type: integer
+        room:
+          type: integer
+        rescheduled_from:
+          type: integer
+          nullable: true
+        cancelled_by:
+          type: integer
+          nullable: true
+      required:
+      - division
+      - end_time
+      - faculty
+      - room
+      - session_date
+      - start_time
+      - subject
+    LectureSessionStatusEnum:
+      enum:
+      - SCHEDULED
+      - CONDUCTED
+      - CANCELLED
+      type: string
+      description: |-
+        * `SCHEDULED` - Scheduled
+        * `CONDUCTED` - Conducted
+        * `CANCELLED` - Cancelled
+    LectureTopic:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        structured_topic:
+          type: string
+          description: Syllabus unit or curriculum point
+          maxLength: 255
+        free_text_notes:
+          type: string
+          description: Actual pedagogical delivery notes
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - updated_at
+    LectureTopicRequest:
+      type: object
+      properties:
+        structured_topic:
+          type: string
+          description: Syllabus unit or curriculum point
+          maxLength: 255
+        free_text_notes:
+          type: string
+          description: Actual pedagogical delivery notes
+    ModeEnum:
+      enum:
+      - MODE_1_ALL_PRESENT
+      - MODE_2_ALL_ABSENT
+      type: string
+      description: |-
+        * `MODE_1_ALL_PRESENT` - MODE_1_ALL_PRESENT
+        * `MODE_2_ALL_ABSENT` - MODE_2_ALL_ABSENT
+    NewStatusEnum:
+      enum:
+      - PRESENT
+      - ABSENT
+      type: string
+      description: |-
+        * `PRESENT` - PRESENT
+        * `ABSENT` - ABSENT
+    NotificationOutbox:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        student_roll:
+          type: string
+          readOnly: true
+        student_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        recipient_email:
+          type: string
+          format: email
+          maxLength: 254
+        subject_line:
+          type: string
+          maxLength: 255
+        body_text:
+          type: string
+        notification_type:
+          $ref: '#/components/schemas/NotificationTypeEnum'
+        status:
+          $ref: '#/components/schemas/NotificationOutboxStatusEnum'
+        retry_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        error_message:
+          type: string
+        sent_at:
+          type: string
+          format: date-time
+          nullable: true
+        student:
+          type: integer
+          nullable: true
+      required:
+      - body_text
+      - created_at
+      - id
+      - recipient_email
+      - student_name
+      - student_roll
+      - subject_line
+      - updated_at
+    NotificationOutboxStatusEnum:
+      enum:
+      - PENDING
+      - SENT
+      - FAILED
+      type: string
+      description: |-
+        * `PENDING` - Pending Transmission
+        * `SENT` - Transmitted Successfully
+        * `FAILED` - Transmission Failed
+    NotificationState:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        student_roll:
+          type: string
+          readOnly: true
+        student_name:
+          type: string
+          readOnly: true
+        subject_code:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        is_currently_deficient:
+          type: boolean
+        last_percentage:
+          type: number
+          format: double
+        first_notified_at:
+          type: string
+          format: date-time
+          nullable: true
+        last_reminded_at:
+          type: string
+          format: date-time
+          nullable: true
+        reminder_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        student:
+          type: integer
+        subject:
+          type: integer
+      required:
+      - created_at
+      - id
+      - student
+      - student_name
+      - student_roll
+      - subject
+      - subject_code
+      - updated_at
+    NotificationTypeEnum:
+      enum:
+      - THRESHOLD_75_WARNING
+      - ATTENDANCE_CORRECTION
+      - SYSTEM_ALERT
+      type: string
+      description: |-
+        * `THRESHOLD_75_WARNING` - Threshold 75% Warning
+        * `ATTENDANCE_CORRECTION` - Attendance Correction Notice
+        * `SYSTEM_ALERT` - System Alert
+    OTPRequestRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 1
+      required:
+      - email
+    OTPVerifyRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 1
+        otp:
+          type: string
+          minLength: 1
+          maxLength: 10
+      required:
+      - email
+      - otp
+    OfflineSyncPayloadRequest:
+      type: object
+      properties:
+        idempotency_key:
+          type: string
+          format: uuid
+        session_id:
+          type: integer
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttendanceRecordItemRequest'
+        mode:
+          allOf:
+          - $ref: '#/components/schemas/ModeEnum'
+          default: MODE_1_ALL_PRESENT
+        structured_topic:
+          type: string
+          default: ''
+        free_text_notes:
+          type: string
+          default: ''
+        finalize:
+          type: boolean
+          default: true
+        client_timestamp:
+          type: string
+          format: date-time
+      required:
+      - records
+      - session_id
+    PaginatedAcademicYearList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AcademicYear'
+    PaginatedAdminStudentList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdminStudent'
+    PaginatedAuditEntryList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditEntry'
+    PaginatedCorrectionRequestList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CorrectionRequest'
+    PaginatedDepartmentList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
+    PaginatedDivisionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Division'
+    PaginatedFacultyAssignmentList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/FacultyAssignment'
+    PaginatedLectureSessionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/LectureSession'
+    PaginatedNotificationOutboxList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationOutbox'
+    PaginatedNotificationStateList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationState'
+    PaginatedProgramList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Program'
+    PaginatedRoomList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Room'
+    PaginatedSemesterList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Semester'
+    PaginatedStudentImportLogList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/StudentImportLog'
+    PaginatedSubjectList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subject'
+    PaginatedTimetableSlotList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimetableSlot'
+    PaginatedUserList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    PatchedAcademicYearRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: e.g. 2026-2027
+          maxLength: 50
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        is_current:
+          type: boolean
+    PatchedAdminStudentRequest:
+      type: object
+      description: Full administrative serializer exposing university PRN and full
+        profile.
+      properties:
+        prn:
+          type: string
+          minLength: 1
+          description: Full University Permanent Registration Number (e.g. 23060361241234)
+          maxLength: 64
+        roll_number:
+          type: string
+          minLength: 1
+          description: Class Roll No (e.g. IT-01)
+          maxLength: 30
+        full_name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        official_email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 254
+        status:
+          $ref: '#/components/schemas/AdminStudentStatusEnum'
+        division:
+          type: integer
+    PatchedDepartmentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        code:
+          type: string
+          minLength: 1
+          maxLength: 20
+        description:
+          type: string
+        is_active:
+          type: boolean
+    PatchedDivisionRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: e.g. Division A, Div 1
+          maxLength: 50
+        code:
+          type: string
+          maxLength: 20
+        semester:
+          type: integer
+    PatchedFacultyAssignmentRequest:
+      type: object
+      properties:
+        is_primary:
+          type: boolean
+          description: Designates the primary lead instructor
+        faculty:
+          type: integer
+        subject:
+          type: integer
+        division:
+          type: integer
+        academic_year:
+          type: integer
+    PatchedLectureSessionRequest:
+      type: object
+      properties:
+        session_date:
+          type: string
+          format: date
+        start_time:
+          type: string
+          format: time
+        end_time:
+          type: string
+          format: time
+        duration_minutes:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          description: Duration in minutes (e.g. 60m for theory, 120m for lab)
+        session_type:
+          $ref: '#/components/schemas/SessionTypeEnum'
+        status:
+          $ref: '#/components/schemas/LectureSessionStatusEnum'
+        cancellation_reason:
+          type: string
+        cancelled_at:
+          type: string
+          format: date-time
+          nullable: true
+        slot:
+          type: integer
+          nullable: true
+        division:
+          type: integer
+        subject:
+          type: integer
+        faculty:
+          type: integer
+        room:
+          type: integer
+        rescheduled_from:
+          type: integer
+          nullable: true
+        cancelled_by:
+          type: integer
+          nullable: true
+    PatchedProgramRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        code:
+          type: string
+          minLength: 1
+          maxLength: 30
+        duration_years:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        is_active:
+          type: boolean
+        department:
+          type: integer
+    PatchedRoomRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        room_type:
+          $ref: '#/components/schemas/RoomTypeEnum'
+        capacity:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        building:
+          type: string
+          maxLength: 100
+        floor:
+          type: string
+          maxLength: 50
+        is_active:
+          type: boolean
+    PatchedSemesterRequest:
+      type: object
+      properties:
+        semester_number:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          description: 1 to 8
+        term_type:
+          $ref: '#/components/schemas/TermTypeEnum'
+        is_current:
+          type: boolean
+        program:
+          type: integer
+        academic_year:
+          type: integer
+    PatchedSubjectRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        code:
+          type: string
+          minLength: 1
+          maxLength: 30
+        subject_type:
+          $ref: '#/components/schemas/SubjectTypeEnum'
+        weekly_theory_hours:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        weekly_lab_hours:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        is_active:
+          type: boolean
+        department:
+          type: integer
+        semester:
+          type: integer
+    PatchedTimetableSlotRequest:
+      type: object
+      properties:
+        day_of_week:
+          allOf:
+          - $ref: '#/components/schemas/DayOfWeekEnum'
+          minimum: 0
+          maximum: 9223372036854775807
+        start_time:
+          type: string
+          format: time
+        end_time:
+          type: string
+          format: time
+        session_type:
+          $ref: '#/components/schemas/SessionTypeEnum'
+        is_active:
+          type: boolean
+        academic_year:
+          type: integer
+        division:
+          type: integer
+        subject:
+          type: integer
+        faculty:
+          type: integer
+        room:
+          type: integer
+    PatchedUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 254
+        full_name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        role:
+          $ref: '#/components/schemas/RoleEnum'
+        department:
+          type: integer
+          nullable: true
+        phone_number:
+          type: string
+          maxLength: 20
+        is_active:
+          type: boolean
+    Program:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        department_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+        code:
+          type: string
+          maxLength: 30
+        duration_years:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        is_active:
+          type: boolean
+        department:
+          type: integer
+      required:
+      - code
+      - created_at
+      - department
+      - department_name
+      - id
+      - name
+      - updated_at
+    ProgramRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        code:
+          type: string
+          minLength: 1
+          maxLength: 30
+        duration_years:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        is_active:
+          type: boolean
+        department:
+          type: integer
+      required:
+      - code
+      - department
+      - name
+    RescheduleSessionRequest:
+      type: object
+      properties:
+        new_date:
+          type: string
+          format: date
+        new_start_time:
+          type: string
+          format: time
+        new_end_time:
+          type: string
+          format: time
+        new_room_id:
+          type: integer
+          nullable: true
+        reason:
+          type: string
+          default: ''
+        override_conflicts:
+          type: boolean
+          default: false
+      required:
+      - new_date
+      - new_end_time
+      - new_start_time
+    ReviewCorrectionRequest:
+      type: object
+      properties:
+        approved:
+          type: boolean
+        remarks:
+          type: string
+          default: ''
+      required:
+      - approved
+    RoleEnum:
+      enum:
+      - ADMIN
+      - HOD
+      - FACULTY
+      type: string
+      description: |-
+        * `ADMIN` - System Administrator
+        * `HOD` - Head of Department
+        * `FACULTY` - Teaching Faculty
+    Room:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        room_type:
+          $ref: '#/components/schemas/RoomTypeEnum'
+        capacity:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        building:
+          type: string
+          maxLength: 100
+        floor:
+          type: string
+          maxLength: 50
+        is_active:
+          type: boolean
+      required:
+      - created_at
+      - id
+      - name
+      - updated_at
+    RoomRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        room_type:
+          $ref: '#/components/schemas/RoomTypeEnum'
+        capacity:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        building:
+          type: string
+          maxLength: 100
+        floor:
+          type: string
+          maxLength: 50
+        is_active:
+          type: boolean
+      required:
+      - name
+    RoomTypeEnum:
+      enum:
+      - CLASSROOM
+      - LAB
+      - SEMINAR_HALL
+      type: string
+      description: |-
+        * `CLASSROOM` - Classroom / Lecture Hall
+        * `LAB` - Laboratory / Practical Room
+        * `SEMINAR_HALL` - Seminar Hall / Auditorium
+    Semester:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        program_name:
+          type: string
+          readOnly: true
+        academic_year_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        semester_number:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          description: 1 to 8
+        term_type:
+          $ref: '#/components/schemas/TermTypeEnum'
+        is_current:
+          type: boolean
+        program:
+          type: integer
+        academic_year:
+          type: integer
+      required:
+      - academic_year
+      - academic_year_name
+      - created_at
+      - id
+      - program
+      - program_name
+      - semester_number
+      - updated_at
+    SemesterRequest:
+      type: object
+      properties:
+        semester_number:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          description: 1 to 8
+        term_type:
+          $ref: '#/components/schemas/TermTypeEnum'
+        is_current:
+          type: boolean
+        program:
+          type: integer
+        academic_year:
+          type: integer
+      required:
+      - academic_year
+      - program
+      - semester_number
+    SessionTypeEnum:
+      enum:
+      - THEORY
+      - LAB
+      type: string
+      description: |-
+        * `THEORY` - Theory Lecture
+        * `LAB` - Lab / Practical Session
+    StatusCecEnum:
+      enum:
+      - PRESENT
+      - ABSENT
+      type: string
+      description: |-
+        * `PRESENT` - PRESENT
+        * `ABSENT` - ABSENT
+    StudentImportLog:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        file_name:
+          type: string
+          maxLength: 255
+        total_rows:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        imported_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        updated_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        error_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        error_details: {}
+        uploaded_by:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - file_name
+      - id
+      - updated_at
+    StudentImportRequest:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+        division_id:
+          type: integer
+          nullable: true
+      required:
+      - file
+    Subject:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        department_name:
+          type: string
+          readOnly: true
+        semester_info:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        code:
+          type: string
+          maxLength: 30
+        subject_type:
+          $ref: '#/components/schemas/SubjectTypeEnum'
+        weekly_theory_hours:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        weekly_lab_hours:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        is_active:
+          type: boolean
+        department:
+          type: integer
+        semester:
+          type: integer
+      required:
+      - code
+      - created_at
+      - department
+      - department_name
+      - id
+      - name
+      - semester
+      - semester_info
+      - updated_at
+    SubjectRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        code:
+          type: string
+          minLength: 1
+          maxLength: 30
+        subject_type:
+          $ref: '#/components/schemas/SubjectTypeEnum'
+        weekly_theory_hours:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        weekly_lab_hours:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        is_active:
+          type: boolean
+        department:
+          type: integer
+        semester:
+          type: integer
+      required:
+      - code
+      - department
+      - name
+      - semester
+    SubjectTypeEnum:
+      enum:
+      - THEORY
+      - LAB
+      - BOTH
+      type: string
+      description: |-
+        * `THEORY` - Theory Only
+        * `LAB` - Lab / Practical Only
+        * `BOTH` - Theory & Practical
+    SubmitAttendanceRequest:
+      type: object
+      properties:
+        mode:
+          allOf:
+          - $ref: '#/components/schemas/ModeEnum'
+          default: MODE_1_ALL_PRESENT
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttendanceRecordItemRequest'
+        finalize:
+          type: boolean
+          default: false
+        structured_topic:
+          type: string
+          default: ''
+          maxLength: 255
+        free_text_notes:
+          type: string
+          default: ''
+      required:
+      - records
+    SubmitCorrectionRequest:
+      type: object
+      properties:
+        attendance_record_id:
+          type: integer
+        new_status:
+          $ref: '#/components/schemas/NewStatusEnum'
+        reason:
+          type: string
+          minLength: 3
+          maxLength: 500
+      required:
+      - attendance_record_id
+      - new_status
+      - reason
+    TermTypeEnum:
+      enum:
+      - ODD
+      - EVEN
+      type: string
+      description: |-
+        * `ODD` - Odd Semester
+        * `EVEN` - Even Semester
+    TimetableSlot:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        subject_code:
+          type: string
+          readOnly: true
+        subject_name:
+          type: string
+          readOnly: true
+        division_name:
+          type: string
+          readOnly: true
+        faculty_name:
+          type: string
+          readOnly: true
+        room_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        day_of_week:
+          allOf:
+          - $ref: '#/components/schemas/DayOfWeekEnum'
+          minimum: 0
+          maximum: 9223372036854775807
+        start_time:
+          type: string
+          format: time
+        end_time:
+          type: string
+          format: time
+        session_type:
+          $ref: '#/components/schemas/SessionTypeEnum'
+        is_active:
+          type: boolean
+        academic_year:
+          type: integer
+        division:
+          type: integer
+        subject:
+          type: integer
+        faculty:
+          type: integer
+        room:
+          type: integer
+      required:
+      - academic_year
+      - created_at
+      - day_of_week
+      - division
+      - division_name
+      - end_time
+      - faculty
+      - faculty_name
+      - id
+      - room
+      - room_name
+      - start_time
+      - subject
+      - subject_code
+      - subject_name
+      - updated_at
+    TimetableSlotRequest:
+      type: object
+      properties:
+        day_of_week:
+          allOf:
+          - $ref: '#/components/schemas/DayOfWeekEnum'
+          minimum: 0
+          maximum: 9223372036854775807
+        start_time:
+          type: string
+          format: time
+        end_time:
+          type: string
+          format: time
+        session_type:
+          $ref: '#/components/schemas/SessionTypeEnum'
+        is_active:
+          type: boolean
+        academic_year:
+          type: integer
+        division:
+          type: integer
+        subject:
+          type: integer
+        faculty:
+          type: integer
+        room:
+          type: integer
+      required:
+      - academic_year
+      - day_of_week
+      - division
+      - end_time
+      - faculty
+      - room
+      - start_time
+      - subject
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        full_name:
+          type: string
+          maxLength: 255
+        role:
+          $ref: '#/components/schemas/RoleEnum'
+        department:
+          type: integer
+          nullable: true
+        department_details:
+          allOf:
+          - $ref: '#/components/schemas/DepartmentBrief'
+          readOnly: true
+        phone_number:
+          type: string
+          maxLength: 20
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - department_details
+      - email
+      - full_name
+      - id
+    UserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 254
+        full_name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        role:
+          $ref: '#/components/schemas/RoleEnum'
+        department:
+          type: integer
+          nullable: true
+        phone_number:
+          type: string
+          maxLength: 20
+        is_active:
+          type: boolean
+      required:
+      - email
+      - full_name
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Token
+      description: Custom Bearer token issued upon OTP verification.
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
